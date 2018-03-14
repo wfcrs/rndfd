@@ -1,0 +1,11 @@
+{
+  "name": "rndfd",
+  "version": "1.0.0",
+  "description": "Roll a dice to choose what to eat",
+  "main": "rnd.js",
+  "scripts": {
+    "test": "node rnd"
+  },
+  "author": "lynz",
+  "license": "GPL-3.0"
+}
