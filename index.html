@@ -12,17 +12,17 @@
   .
   <div id="i"></div>
   <script>
+    function getKeys() {
+      var xmlhttp;
+      if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+      else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.open("GET", jsondir, false);
+      xmlhttp.send();
+      return JSON.parse(xmlhttp.responseText)
+    }
+
     function dostuff() {
       let jsondir = "https://github.com/wfcrs/rndfd/raw/master/foods.json"
-
-      function getKeys() {
-        var xmlhttp;
-        if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
-        else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        xmlhttp.open("GET", jsondir, false);
-        xmlhttp.send();
-        return JSON.parse(xmlhttp.responseText)
-      }
 
       let sum = 0
 
