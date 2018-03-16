@@ -1,0 +1,26 @@
+{
+  "shuijiao":{
+    "weight": 1,
+    "name": "水饺"
+  },
+  "tieban":{
+    "weight": 0.3,
+    "name": "铁板"
+  },
+  "jipaifan":{
+    "weight": 0.8,
+    "name": "鸡排饭"
+  },
+  "erlou":{
+    "weight": 0,
+    "name": "二楼"
+  },
+  "sanlounan":{
+    "weight": 0,
+    "name": "三楼南"
+  },
+  "sanloubei":{
+    "weight": 0,
+    "name": "三楼北"
+  }
+}
