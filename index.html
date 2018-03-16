@@ -9,23 +9,22 @@
 </head>
 
 <body>
-  .
+  
   <div id="i"></div>
   <script>
+    var jsondir = "https://raw.githubusercontent.com/wfcrs/rndfd/master/foods.json"
+
     function getKeys() {
-      var xmlhttp;
-      if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
-      else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-      xmlhttp.open("GET", jsondir, false);
-      xmlhttp.send();
+      var xmlhttp
+      if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest()
+      else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+      xmlhttp.open("GET", jsondir, false)
+      xmlhttp.send()
       return JSON.parse(xmlhttp.responseText)
     }
 
     function dostuff() {
-      let jsondir = "https://github.com/wfcrs/rndfd/raw/master/foods.json"
-
       let sum = 0
-
       let foods = getKeys();
       Object.keys(foods).map((v, i) => (sum += foods[v].weight))
       console.log(
@@ -36,9 +35,10 @@
       )
       let r = Math.random() * sum
       console.log('r =', r)
+
       let selectedFood
       for (let food of Object.keys(foods)) {
-        r -= foods[food]
+        r -= foods[food].weight
         if (r <= 0) {
           selectedFood = foods[food].name
           break
@@ -50,7 +50,7 @@
       document.getElementById('i').innerHTML = selectedFood;
     }
 
-    document.onload(dostuff())
+    document.onload = dostuff()
   </script>
 </body>
 
