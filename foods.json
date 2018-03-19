@@ -12,15 +12,23 @@
     "name": "鸡排饭"
   },
   "erlou":{
-    "weight": 0,
+    "weight": 0.2,
     "name": "二楼"
   },
   "sanlounan":{
-    "weight": 0,
+    "weight": 0.05,
     "name": "三楼南"
   },
   "sanloubei":{
-    "weight": 0,
+    "weight": 0.0,
     "name": "三楼北"
+  },
+  "yiloutaocan":{
+    "weight": 0.1,
+    "name": "一楼套餐"
+  },
+  "xiaohuoguo":{
+    "weight": 0.1,
+    "name": "小火锅"
   }
 }
