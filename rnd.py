@@ -7,7 +7,6 @@ import smtplib
 import email
 from email.mime.text import MIMEText
 from email.utils import formataddr
-# 实现：将权重加起来，在[0,weights_all]之间进行随机
 def mail(content):
     Sender=''                                            # 发件人邮箱账号
     Password = ''                                        # 发件人邮箱密码，如果使用QQ邮箱等，需要使用授权码
@@ -22,8 +21,6 @@ def mail(content):
     server.sendmail(Sender,[Receiver,],msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
     server.quit() 
 class Rnd():
-    AllWeights=0
-
     def __init__(self):
         with open("./foods.json","r",encoding="utf-8") as json_file:
             self.json_data=json.load(json_file)
@@ -37,12 +34,9 @@ class Rnd():
             Random_Weight-=(self.json_data[i])['weight']
             if(Random_Weight<=0):
                 return (self.json_data[i])['name']
-    # def Data_Print(self):
-    #     print(self.Weights_All)
 
 Random_Food=Rnd()
 content=""
 for i in range(0,6):
     content=content+Random_Food.WeightedRandom()+" "
 mail(content)
-# Random_Food.Data_Print()
