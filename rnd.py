@@ -7,18 +7,17 @@ import smtplib
 import email
 from email.mime.text import MIMEText
 from email.utils import formataddr
-def mail(content):
-    Sender=''                                            # 发件人邮箱账号
-    Password = ''                                        # 发件人邮箱密码，如果使用QQ邮箱等，需要使用授权码
-    Receiver=''                                          # 收件人邮箱账号，我这边发送给自己
-    msg=MIMEText(content,'plain','utf-8')
-    msg['From']=formataddr(["",Sender])                  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-    msg['To']=formataddr(["",Receiver])                  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
-    msg['Subject']="Roll"                                # 邮件的主题
-
-    server=smtplib.SMTP_SSL("smtp.qq.com", 465)          # 发件人邮箱中的SMTP服务器
-    server.login(Sender, Password)                       # 括号中对应的是发件人邮箱账号、邮箱密码
-    server.sendmail(Sender,[Receiver,],msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
+def mail(content,Receiver):
+    Sender=""
+    Password = ""
+    msg=MIMEText(content,"plain","utf-8")
+    msg["Subject"]="Roll"
+    msg["From"]=formataddr(["",Sender])
+    server=smtplib.SMTP_SSL("smtp.qq.com", 465)
+    server.login(Sender, Password)
+    for i in Receiver:
+        msg["To"]=formataddr(["",i])
+        server.sendmail(Sender,[i,],msg.as_string())
     server.quit() 
 class Rnd():
     def __init__(self):
@@ -34,9 +33,9 @@ class Rnd():
             Random_Weight-=(self.json_data[i])['weight']
             if(Random_Weight<=0):
                 return (self.json_data[i])['name']
-
 Random_Food=Rnd()
 content=""
+Receiver=[]
 for i in range(0,6):
     content=content+Random_Food.WeightedRandom()+" "
-mail(content)
+mail(content,Receiver)
