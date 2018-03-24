@@ -20,6 +20,7 @@ def mail(content,Receiver):
         server.sendmail(Sender,[i,],msg.as_string())
     server.quit() 
 class Rnd():
+    temp=""
     def __init__(self):
         with open("./foods.json","r",encoding="utf-8") as json_file:
             self.json_data=json.load(json_file)
@@ -32,7 +33,11 @@ class Rnd():
         for i in self.json_data:
             Random_Weight-=(self.json_data[i])['weight']
             if(Random_Weight<=0):
-                return (self.json_data[i])['name']
+                if((self.json_data[i])['name']!=self.temp):
+                    self.temp=(self.json_data[i])['name']
+                    return (self.json_data[i])['name']
+                else:
+                    return self.WeightedRandom()
 Random_Food=Rnd()
 content=""
 Receiver=[]
